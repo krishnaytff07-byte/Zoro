@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Zoro's Crimson BGMI Loader Key Store</title>
+  <meta name="theme-color" content="#08080a" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Rajdhani', sans-serif;
+      background-color: #08080a;
+      color: #f3f4f6;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+    }
+    input, textarea {
+      user-select: text;
+    }
+    .font-orbitron {
+      font-family: 'Orbitron', sans-serif;
+    }
+    .crimson-glow {
+      box-shadow: 0 0 20px rgba(220, 38, 38, 0.35);
+    }
+    .crimson-border {
+      border: 1px solid rgba(220, 38, 38, 0.4);
+    }
+    .glass-card {
+      background: rgba(18, 18, 24, 0.88);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+  </style>
+</head>
+<body class="min-h-screen pb-24 selection:bg-red-600 selection:text-white">
+
+  <!-- Top App Header -->
+  <header class="sticky top-0 z-40 glass-card border-b border-red-900/40 px-4 py-3">
+    <div class="max-w-5xl mx-auto flex items-center justify-between">
+      <div class="flex items-center gap-2.5">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-red-600 to-rose-950 flex items-center justify-center font-orbitron font-black text-white text-lg crimson-glow">
+          Z
+        </div>
+        <div>
+          <h1 class="font-orbitron font-bold text-sm sm:text-base tracking-wider text-white leading-tight">ZORO STORE</h1>
+          <p class="text-[11px] text-red-400 font-semibold tracking-widest uppercase">Crimson BGMI Loader</p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <button id="install-app-btn" class="hidden bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold px-3 py-1.5 rounded-lg transition flex items-center gap-1.5 shadow-lg shadow-emerald-900/40">
+          <span>⬇ Install App</span>
+        </button>
+        <button id="admin-panel-btn" class="bg-zinc-900 hover:bg-zinc-800 border border-red-700/50 text-red-400 text-xs font-bold px-2.5 py-1.5 rounded-lg transition relative">
+          Admin
+          <span id="pending-badge" class="hidden absolute -top-1.5 -right-1.5 bg-red-600 text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">0</span>
+        </button>
+        <button id="nav-auth-btn" class="bg-red-600 hover:bg-red-500 text-white text-xs font-bold px-3 py-1.5 rounded-lg transition crimson-glow">
+          <span id="nav-auth-label">Login / Join</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- PUBLIC LANDING / AUTH VIEW -->
+  <main id="public-landing-page" class="max-w-5xl mx-auto px-4 pt-6 space-y-6">
+    <!-- Hero Banner -->
+    <section class="glass-card rounded-2xl p-6 crimson-border relative overflow-hidden">
+      <div class="absolute -right-10 -top-10 w-44 h-44 bg-red-600/20 rounded-full blur-3xl pointer-events-none"></div>
+      <span class="inline-block bg-red-950/80 border border-red-600/40 text-red-400 text-xs font-bold px-3 py-1 rounded-full mb-3">
+        OFFICIAL VIP KEY PORTAL • v3.6 READY
+      </span>
+      <h2 class="font-orbitron text-2xl sm:text-3xl font-black text-white mb-2">
+        ZORO'S CRIMSON <span class="text-red-500">BGMI LOADER</span>
+      </h2>
+      <p class="text-gray-300 text-sm sm:text-base max-w-xl mb-5">
+        Instant automated key generation, anti-ban private build access, daily rewards, and verified UPI wallet top-ups.
+      </p>
+
+      <div class="flex flex-wrap gap-3">
+        <button onclick="openAuthModal('register')" class="bg-red-600 hover:bg-red-500 text-white font-bold px-5 py-2.5 rounded-xl text-sm transition crimson-glow">
+          Create Account (+200 Pts)
+        </button>
+        <button onclick="openAuthModal('login')" class="bg-zinc-900 hover:bg-zinc-800 border border-white/10 text-white font-bold px-5 py-2.5 rounded-xl text-sm transition">
+          Member Login
+        </button>
+        <a href="https://t.me/NOXEDITZ" target="_blank" rel="noopener" class="bg-sky-600/20 hover:bg-sky-600/30 border border-sky-500/40 text-sky-300 font-bold px-4 py-2.5 rounded-xl text-sm transition flex items-center gap-2">
+          <span>✈ Help & Support (@NOXEDITZ)</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Key Plans Preview -->
+    <section id="section-keys" class="space-y-3">
+      <h3 class="font-orbitron text-base font-bold text-white flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-red-500"></span> LOADER SUBSCRIPTION PLANS
+      </h3>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div class="glass-card rounded-xl p-4 border border-white/10">
+          <div class="flex justify-between items-center mb-2">
+            <span class="font-orbitron font-bold text-white">1 DAY TRIAL</span>
+            <span class="text-red-400 font-orbitron font-bold text-lg">₹120</span>
+          </div>
+          <p class="text-xs text-gray-400 mb-3">Full ESP, Aimbot & Safe Bypass for 24 Hours.</p>
+          <button onclick="openAuthModal('login')" class="w-full bg-zinc-800 hover:bg-red-600 text-white text-xs font-bold py-2 rounded-lg transition">
+            Login to Buy
+          </button>
+        </div>
+        <div class="glass-card rounded-xl p-4 crimson-border relative">
+          <span class="absolute -top-2.5 right-3 bg-red-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">POPULAR</span>
+          <div class="flex justify-between items-center mb-2">
+            <span class="font-orbitron font-bold text-white">7 DAYS VIP</span>
+            <span class="text-red-400 font-orbitron font-bold text-lg">₹450</span>
+          </div>
+          <p class="text-xs text-gray-400 mb-3">Priority Server Access + Zero Lag Config.</p>
+          <button onclick="openAuthModal('login')" class="w-full bg-red-600 hover:bg-red-500 text-white text-xs font-bold py-2 rounded-lg transition">
+            Login to Buy
+          </button>
+        </div>
+        <div class="glass-card rounded-xl p-4 border border-white/10">
+          <div class="flex justify-between items-center mb-2">
+            <span class="font-orbitron font-bold text-white">30 DAYS PRO</span>
+            <span class="text-red-400 font-orbitron font-bold text-lg">₹1,100</span>
+          </div>
+          <p class="text-xs text-gray-400 mb-3">Full Season Rank Push Protection + 24/7 Support.</p>
+          <button onclick="openAuthModal('login')" class="w-full bg-zinc-800 hover:bg-red-600 text-white text-xs font-bold py-2 rounded-lg transition">
+            Login to Buy
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Telegram Help Card -->
+    <section id="section-help" class="glass-card rounded-xl p-4 border border-sky-500/30 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+      <div>
+        <h4 class="font-orbitron font-bold text-sm text-sky-400">NEED HELP OR MANUAL ACTIVATION?</h4>
+        <p class="text-xs text-gray-300">Contact Zoro Official Support directly on Telegram for loader setup & payment help.</p>
+      </div>
+      <a href="https://t.me/NOXEDITZ" target="_blank" rel="noopener" class="bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs px-4 py-2.5 rounded-lg transition whitespace-nowrap">
+        Open t.me/NOXEDITZ
+      </a>
+    </section>
+  </main>
+
+  <!-- MEMBER DASHBOARD VIEW -->
+  <main id="member-dashboard-page" class="hidden max-w-5xl mx-auto px-4 pt-5 space-y-5">
+    <!-- User Top Bar -->
+    <div class="glass-card rounded-2xl p-4 crimson-border flex flex-wrap items-center justify-between gap-4">
+      <div>
+        <p class="text-xs text-gray-400">Welcome back,</p>
+        <h2 id="dash-username" class="font-orbitron text-lg font-bold text-white">Player</h2>
+        <p id="dash-email" class="text-xs text-gray-400">player@zoro.store</p>
+      </div>
+      <div class="flex items-center gap-3">
+        <div class="bg-zinc-900/90 border border-white/10 px-3.5 py-2 rounded-xl text-right">
+          <p class="text-[10px] uppercase text-gray-400">Wallet Balance</p>
+          <p id="dash-wallet" class="font-orbitron font-bold text-emerald-400 text-base">₹0</p>
+        </div>
+        <div class="bg-zinc-900/90 border border-white/10 px-3.5 py-2 rounded-xl text-right">
+          <p class="text-[10px] uppercase text-gray-400">Crimson Points</p>
+          <p id="dash-points" class="font-orbitron font-bold text-amber-400 text-base">0 Pts</p>
+        </div>
+        <button id="logout-btn" class="bg-zinc-800 hover:bg-red-900/60 border border-white/10 text-xs font-bold px-3 py-2 rounded-xl text-gray-300">
+          Logout
+        </button>
+      </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+      <button onclick="openAddMoneyModal()" class="glass-card hover:border-emerald-500/60 rounded-xl p-3.5 text-left transition">
+        <span class="text-emerald-400 font-orbitron font-bold text-xs block mb-1">+ ADD MONEY</span>
+        <span class="text-[11px] text-gray-400">Pay via Paytm UPI QR</span>
+      </button>
+      <button id="daily-checkin-btn" class="glass-card hover:border-amber-500/60 rounded-xl p-3.5 text-left transition">
+        <span class="text-amber-400 font-orbitron font-bold text-xs block mb-1">DAILY CHECK-IN</span>
+        <span id="checkin-status" class="text-[11px] text-gray-400">Claim +25 Pts Today</span>
+      </button>
+      <button id="fortune-chest-btn" class="glass-card hover:border-red-500/60 rounded-xl p-3.5 text-left transition">
+        <span class="text-red-400 font-orbitron font-bold text-xs block mb-1">FORTUNE CHEST</span>
+        <span id="chest-status" class="text-[11px] text-gray-400">1 Free Spin Daily</span>
+      </button>
+      <a href="https://t.me/NOXEDITZ" target="_blank" rel="noopener" class="glass-card hover:border-sky-500/60 rounded-xl p-3.5 text-left transition block">
+        <span class="text-sky-400 font-orbitron font-bold text-xs block mb-1">TELEGRAM HELP</span>
+        <span class="text-[11px] text-gray-400">t.me/NOXEDITZ</span>
+      </a>
+    </div>
+
+    <!-- Key Store Purchase Section -->
+    <section id="dash-keys-section" class="glass-card rounded-2xl p-4 space-y-3">
+      <h3 class="font-orbitron text-sm font-bold text-white">BUY LOADER KEYS (INSTANT DELIVERY)</h3>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+        <div class="bg-zinc-900/80 border border-white/10 rounded-xl p-3.5">
+          <div class="flex justify-between items-center mb-1">
+            <span class="font-bold text-white text-sm">1 Day Key</span>
+            <span class="font-orbitron font-bold text-red-400">₹120</span>
+          </div>
+          <p class="text-xs text-gray-400 mb-3">24 Hours Full Access</p>
+          <button onclick="buyKey('1 Day BGMI Key', 120)" class="w-full bg-red-600 hover:bg-red-500 text-white text-xs font-bold py-2 rounded-lg transition">
+            Buy & Generate Key
+          </button>
+        </div>
+        <div class="bg-zinc-900/80 border border-red-600/40 rounded-xl p-3.5">
+          <div class="flex justify-between items-center mb-1">
+            <span class="font-bold text-white text-sm">7 Days VIP Key</span>
+            <span class="font-orbitron font-bold text-red-400">₹450</span>
+          </div>
+          <p class="text-xs text-gray-400 mb-3">7 Days Anti-Ban VIP</p>
+          <button onclick="buyKey('7 Days VIP Key', 450)" class="w-full bg-red-600 hover:bg-red-500 text-white text-xs font-bold py-2 rounded-lg transition">
+            Buy & Generate Key
+          </button>
+        </div>
+        <div class="bg-zinc-900/80 border border-white/10 rounded-xl p-3.5">
+          <div class="flex justify-between items-center mb-1">
+            <span class="font-bold text-white text-sm">30 Days Pro Key</span>
+            <span class="font-orbitron font-bold text-red-400">₹1,100</span>
+          </div>
+          <p class="text-xs text-gray-400 mb-3">30 Days Season Pro</p>
+          <button onclick="buyKey('30 Days Pro Key', 1100)" class="w-full bg-red-600 hover:bg-red-500 text-white text-xs font-bold py-2 rounded-lg transition">
+            Buy & Generate Key
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Points Exchange Forge -->
+    <section id="dash-forge-section" class="glass-card rounded-2xl p-4 space-y-3">
+      <div class="flex items-center justify-between">
+        <h3 class="font-orbitron text-sm font-bold text-amber-400">CRIMSON KEY FORGE (REDEEM POINTS)</h3>
+        <span class="text-xs text-gray-400">Exchange Points for Keys</span>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <div class="bg-zinc-900/80 border border-amber-500/20 rounded-xl p-3 flex items-center justify-between">
+          <div>
+            <p class="font-bold text-sm text-white">1-Day Trial Key</p>
+            <p class="text-xs text-amber-400 font-semibold">Cost: 500 Points</p>
+          </div>
+          <button onclick="redeemPointsKey('1-Day Trial Key (Points)', 500)" class="bg-amber-600 hover:bg-amber-500 text-black font-bold text-xs px-3.5 py-2 rounded-lg">
+            Forge Key
+          </button>
+        </div>
+        <div class="bg-zinc-900/80 border border-amber-500/20 rounded-xl p-3 flex items-center justify-between">
+          <div>
+            <p class="font-bold text-sm text-white">7-Day VIP Key</p>
+            <p class="text-xs text-amber-400 font-semibold">Cost: 2,500 Points</p>
+          </div>
+          <button onclick="redeemPointsKey('7-Day VIP Key (Points)', 2500)" class="bg-amber-600 hover:bg-amber-500 text-black font-bold text-xs px-3.5 py-2 rounded-lg">
+            Forge Key
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- My Keys & Payment History -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <section class="glass-card rounded-2xl p-4">
+        <h3 class="font-orbitron text-xs font-bold text-white mb-3 uppercase">My Generated Keys</h3>
+        <div id="my-keys-list" class="space-y-2 text-xs text-gray-400">No keys generated yet.</div>
+      </section>
+      <section class="glass-card rounded-2xl p-4">
+        <h3 class="font-orbitron text-xs font-bold text-white mb-3 uppercase">Wallet Top-Up Requests</h3>
+        <div id="my-tx-list" class="space-y-2 text-xs text-gray-400">No payment requests yet.</div>
+      </section>
+    </div>
+  </main>
+
+  <!-- AUTH MODAL (LOGIN & REGISTER) -->
+  <div id="auth-modal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="glass-card rounded-2xl max-w-md w-full p-6 crimson-border relative">
+      <button onclick="closeModal('auth-modal')" class="absolute top-4 right-4 text-gray-400 hover:text-white text-lg">✕</button>
+      <div class="flex gap-2 mb-5 bg-zinc-900 p-1 rounded-xl">
+        <button id="tab-login" onclick="switchAuthTab('login')" class="flex-1 py-2 rounded-lg text-xs font-bold bg-red-600 text-white">Member Login</button>
+        <button id="tab-register" onclick="switchAuthTab('register')" class="flex-1 py-2 rounded-lg text-xs font-bold text-gray-400">Register (+200 Pts)</button>
+      </div>
+
+      <!-- Login Form -->
+      <form id="login-form" class="space-y-3">
+        <div>
+          <label class="text-xs text-gray-400 block mb-1">Username or Email</label>
+          <input id="login-identifier" type="text" required placeholder="Enter username or email" class="w-full bg-zinc-900 border border-white/10 rounded-xl px-3.5 py-2.5 text-sm text-white focus:border-red-500 outline-none" />
+        </div>
+        <div>
+          <label class="text-xs text-gray-400 block mb-1">Password</label>
+          <input id="login-password" type="password" required placeholder="••••••••" class="w-full bg-zinc-900 border border-white/10 rounded-xl px-3.5 py-2.5 text-sm text-white focus:border-red-500 outline-none" />
+        </div>
+        <button type="submit" class="w-full bg-red-600 hover:bg-red-500 text-white font-bold py-2.5 rounded-xl text-sm transition crimson-glow">
+          Sign In to Dashboard
+        </button>
+      </form>
+
+      <!-- Register Form -->
+      <form id="register-form" class="hidden space-y-3">
+        <div>
+          <label class="text-xs text-gray-400 block mb-1">Username</label>
+          <input id="reg-username" type="text" required placeholder="e.g. ZoroGamer" class="w-full bg-zinc-900 border border-white/10 rounded-xl px-3.5 py-2.5 text-sm text-white focus:border-red-500 outline-none" />
+        </div>
+        <div>
+          <label class="text-xs text-gray-400 block mb-1">Email Address</label>
+          <input id="reg-email" type="email" required placeholder="you@example.com" class="w-full bg-zinc-900 border border-white/10 rounded-xl px-3.5 py-2.5 text-sm text-white focus:border-red-500 outline-none" />
+        </div>
+        <div>
+          <label class="text-xs text-gray-400 block mb-1">Password</label>
+          <input id="reg-password" type="password" required placeholder="Create strong password" class="w-full bg-zinc-900 border border-white/10 rounded-xl px-3.5 py-2.5 text-sm text-white focus:border-red-500 outline-none" />
+        </div>
+        <div>
+          <label class="text-xs text-gray-400 block mb-1">Secret Referral Code (Optional)</label>
+          <input id="reg-referral" type="text" placeholder="Enter invite code if you have one" class="w-full bg-zinc-900 border border-white/10 rounded-xl px-3.5 py-2.5 text-sm text-white focus:border-red-500 outline-none" />
+        </div>
+        <button type="submit" class="w-full bg-red-600 hover:bg-red-500 text-white font-bold py-2.5 rounded-xl text-sm transition crimson-glow">
+          Create Account & Claim Bonus
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ADD MONEY MODAL (PAYTM UPI QR WITH HIDDEN UPI ID) -->
+  <div id="add-money-modal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="glass-card rounded-2xl max-w-md w-full p-6 crimson-border relative">
+      <button onclick="closeModal('add-money-modal')" class="absolute top-4 right-4 text-gray-400 hover:text-white text-lg">✕</button>
+      <h3 class="font-orbitron font-bold text-base text-white mb-1">ADD WALLET BALANCE</h3>
+      <p class="text-xs text-gray-400 mb-4">Scan Paytm QR below and submit your 12-digit UTR number.</p>
+
+      <div class="bg-zinc-900/90 border border-white/10 rounded-xl p-4 text-center mb-4">
+        <div class="inline-block bg-white p-2.5 rounded-xl mb-2">
+          <img id="upi-qr-img" src="" alt="Paytm UPI QR" class="w-40 h-40 object-contain" />
+        </div>
+        <p class="text-xs font-bold text-emerald-400">Zoro Official Merchant (Hidden)</p>
+        <p class="text-[11px] text-gray-400">Supports Paytm, GPay, PhonePe & All UPI Apps</p>
+      </div>
+
+      <form id="add-money-form" class="space-y-3">
+        <div>
+          <label class="text-xs text-gray-400 block mb-1">Amount Paid (₹)</label>
+          <input id="topup-amount" type="number" min="10" required value="120" oninput="updateQrCode()" class="w-full bg-zinc-900 border border-white/10 rounded-xl px-3.5 py-2 text-sm text-white focus:border-emerald-500 outline-none" />
+        </div>
+        <div>
+          <label class="text-xs text-gray-400 block mb-1">12-Digit UTR / Reference Number</label>
+          <input id="topup-utr" type="text" required placeholder="e.g. 432910482910" class="w-full bg-zinc-900 border border-white/10 rounded-xl px-3.5 py-2 text-sm text-white focus:border-emerald-500 outline-none" />
+        </div>
+        <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2.5 rounded-xl text-sm transition">
+          Submit Payment for Verification
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ADMIN PAYMENT APPROVALS MODAL (PIN: 1905) -->
+  <div id="payment-verify-modal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="glass-card rounded-2xl max-w-lg w-full p-6 crimson-border relative max-h-[85vh] overflow-y-auto">
+      <button onclick="closeModal('payment-verify-modal')" class="absolute top-4 right-4 text-gray-400 hover:text-white text-lg">✕</button>
+      <h3 class="font-orbitron font-bold text-base text-red-400 mb-1">ADMIN PAYMENT APPROVALS</h3>
+      <p class="text-xs text-gray-400 mb-4">Confirm money received in Paytm before crediting user wallet.</p>
+
+      <!-- Private UPI Config (Hidden from public, visible only inside Admin PIN panel) -->
+      <div class="bg-zinc-900/90 border border-white/10 rounded-xl p-3 mb-4">
+        <label class="text-[11px] text-gray-400 block mb-1">Private Paytm UPI ID (Hidden on Storefront)</label>
+        <div class="flex gap-2">
+          <input id="admin-upi-input" type="text" class="flex-1 bg-black/60 border border-white/10 rounded-lg px-3 py-1.5 text-xs text-white" />
+          <button id="save-upi-btn" class="bg-red-600 hover:bg-red-500 text-white text-xs font-bold px-3 py-1.5 rounded-lg">Save UPI</button>
+        </div>
+      </div>
+
+      <div id="admin-tx-list" class="space-y-2.5 text-xs"></div>
+    </div>
+  </div>
+
+  <!-- NATIVE MOBILE BOTTOM NAVIGATION BAR -->
+  <nav class="fixed bottom-0 inset-x-0 z-40 glass-card border-t border-red-900/40 px-2 py-2">
+    <div class="max-w-md mx-auto flex items-center justify-around">
+      <button onclick="navScroll('top')" class="flex flex-col items-center text-gray-300 hover:text-red-400 text-[11px] font-bold">
+        <span class="text-base">🏠</span>
+        <span>Home</span>
+      </button>
+      <button onclick="navScroll('keys')" class="flex flex-col items-center text-gray-300 hover:text-red-400 text-[11px] font-bold">
+        <span class="text-base">🔑</span>
+        <span>Keys</span>
+      </button>
+      <button onclick="openAddMoneyModal()" class="flex flex-col items-center justify-center -mt-6 w-12 h-12 rounded-full bg-red-600 text-white shadow-lg crimson-glow font-bold text-lg">
+        +
+      </button>
+      <button onclick="navScroll('forge')" class="flex flex-col items-center text-gray-300 hover:text-amber-400 text-[11px] font-bold">
+        <span class="text-base">⚡</span>
+        <span>Forge</span>
+      </button>
+      <a href="https://t.me/NOXEDITZ" target="_blank" rel="noopener" class="flex flex-col items-center text-sky-400 hover:text-sky-300 text-[11px] font-bold">
+        <span class="text-base">✈</span>
+        <span>Help</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="toast" class="hidden fixed top-16 left-1/2 -translate-x-1/2 z-50 bg-zinc-900 border border-red-500 text-white text-xs font-bold px-4 py-2.5 rounded-xl shadow-2xl"></div>
+
+  <script>
+    const ADMIN_PIN = '1905';
+    const SECRET_REFERRAL = 'ZOROXREMURU';
+    const REFERRAL_BONUS = 1905943;
+
+    const STORAGE_KEYS = {
+      USERS: 'zoro_store_users_v1',
+      CURRENT: 'zoro_store_current_user_v1',
+      TXS: 'zoro_store_txs_v1',
+      UPI: 'zoro_store_private_upi_v1'
+    };
+
+    function getUsers() {
+      return JSON.parse(localStorage.getItem(STORAGE_KEYS.USERS) || '[]');
+    }
+    function saveUsers(users) {
+      localStorage.setItem(STORAGE_KEYS.USERS, JSON.stringify(users));
+    }
+    function getTxs() {
+      return JSON.parse(localStorage.getItem(STORAGE_KEYS.TXS) || '[]');
+    }
+    function saveTxs(txs) {
+      localStorage.setItem(STORAGE_KEYS.TXS, JSON.stringify(txs));
+    }
+    function getPrivateUpi() {
+      return localStorage.getItem(STORAGE_KEYS.UPI) || 'zoro.official@ptyes';
+    }
+    function getCurrentUser() {
+      const email = localStorage.getItem(STORAGE_KEYS.CURRENT);
+      if (!email) return null;
+      return getUsers().find(u => u.email === email) || null;
+    }
+
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.remove('hidden');
+      clearTimeout(window._toastTimer);
+      window._toastTimer = setTimeout(() => t.classList.add('hidden'), 3200);
+    }
+
+    function openModal(id) {
+      document.getElementById(id).classList.remove('hidden');
+    }
+    function closeModal(id) {
+      document.getElementById(id).classList.add('hidden');
+    }
+
+    function openAuthModal(tab) {
+      switchAuthTab(tab);
+      openModal('auth-modal');
+    }
+
+    function switchAuthTab(tab) {
+      const loginForm = document.getElementById('login-form');
+      const regForm = document.getElementById('register-form');
+      const tabLogin = document.getElementById('tab-login');
+      const tabReg = document.getElementById('tab-register');
+      if (tab === 'login') {
+        loginForm.classList.remove('hidden');
+        regForm.classList.add('hidden');
+        tabLogin.className = 'flex-1 py-2 rounded-lg text-xs font-bold bg-red-600 text-white';
+        tabReg.className = 'flex-1 py-2 rounded-lg text-xs font-bold text-gray-400';
+      } else {
+        loginForm.classList.add('hidden');
+        regForm.classList.remove('hidden');
+        tabReg.className = 'flex-1 py-2 rounded-lg text-xs font-bold bg-red-600 text-white';
+        tabLogin.className = 'flex-1 py-2 rounded-lg text-xs font-bold text-gray-400';
+      }
+    }
+
+    function updatePendingBadges() {
+      const pendingCount = getTxs().filter(t => t.status === 'pending').length;
+      const badge = document.getElementById('pending-badge');
+      if (pendingCount > 0) {
+        badge.textContent = pendingCount;
+        badge.classList.remove('hidden');
+      } else {
+        badge.classList.add('hidden');
+      }
+    }
+
+    function renderAppState() {
+      const user = getCurrentUser();
+      const landing = document.getElementById('public-landing-page');
+      const dash = document.getElementById('member-dashboard-page');
+      const navLabel = document.getElementById('nav-auth-label');
+      updatePendingBadges();
+
+      if (!user) {
+        landing.classList.remove('hidden');
+        dash.classList.add('hidden');
+        navLabel.textContent = 'Login / Join';
+        return;
+      }
+
+      landing.classList.add('hidden');
+      dash.classList.remove('hidden');
+      navLabel.textContent = user.username;
+
+      document.getElementById('dash-username').textContent = user.username;
+      document.getElementById('dash-email').textContent = user.email;
+      document.getElementById('dash-wallet').textContent = '₹' + Number(user.wallet || 0).toLocaleString('en-IN');
+      document.getElementById('dash-points').textContent = Number(user.points || 0).toLocaleString('en-IN') + ' Pts';
+
+      const today = new Date().toDateString();
+      const checkinBtn = document.getElementById('daily-checkin-btn');
+      const checkinStatus = document.getElementById('checkin-status');
+      if (user.lastCheckin === today) {
+        checkinStatus.textContent = 'Claimed Today ✓';
+        checkinBtn.classList.add('opacity-60');
+      } else {
+        checkinStatus.textContent = 'Claim +25 Pts Today';
+        checkinBtn.classList.remove('opacity-60');
+      }
+
+      const chestBtn = document.getElementById('fortune-chest-btn');
+      const chestStatus = document.getElementById('chest-status');
+      if (user.lastChest === today) {
+        chestStatus.textContent = 'Daily Chest Claimed (Come Back Tomorrow)';
+        chestBtn.classList.add('opacity-60');
+      } else {
+        chestStatus.textContent = '1 Free Spin Daily';
+        chestBtn.classList.remove('opacity-60');
+      }
+
+      const keysList = document.getElementById('my-keys-list');
+      if (!user.keys || user.keys.length === 0) {
+        keysList.innerHTML = '<p class="text-gray-500">No keys generated yet.</p>';
+      } else {
+        keysList.innerHTML = user.keys.map(k => `
+          <div class="bg-zinc-900 border border-white/10 rounded-lg p-2.5 flex items-center justify-between">
+            <div>
+              <p class="font-bold text-white">${k.plan}</p>
+              <p class="font-mono text-red-400 text-[11px] select-all">${k.code}</p>
+            </div>
+            <span class="text-[10px] text-gray-400">${k.date}</span>
+          </div>
+        `).join('');
+      }
+
+      const myTxs = getTxs().filter(t => t.email === user.email);
+      const txList = document.getElementById('my-tx-list');
+      if (myTxs.length === 0) {
+        txList.innerHTML = '<p class="text-gray-500">No payment requests yet.</p>';
+      } else {
+        txList.innerHTML = myTxs.map(t => `
+          <div class="bg-zinc-900 border border-white/10 rounded-lg p-2.5 flex items-center justify-between">
+            <div>
+              <p class="font-bold text-white">₹${t.amount} • UTR: ${t.utr}</p>
+              <p class="text-[10px] text-gray-400">${t.date}</p>
+            </div>
+            <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase ${
+              t.status === 'approved' ? 'bg-emerald-900/60 text-emerald-400' :
+              t.status === 'rejected' ? 'bg-red-900/60 text-red-400' :
+              'bg-amber-900/60 text-amber-400'
+            }">${t.status}</span>
+          </div>
+        `).join('');
+      }
+    }
+
+    // Register
+    document.getElementById('register-form').addEventListener('submit', e => {
+      e.preventDefault();
+      const username = document.getElementById('reg-username').value.trim();
+      const email = document.getElementById('reg-email').value.trim().toLowerCase();
+      const password = document.getElementById('reg-password').value;
+      const referral = document.getElementById('reg-referral').value.trim().toUpperCase();
+
+      const users = getUsers();
+      if (users.some(u => u.email === email || u.username.toLowerCase() === username.toLowerCase())) {
+        showToast('Username or Email already registered!');
+        return;
+      }
+
+      let startingPoints = 200;
+      if (referral === SECRET_REFERRAL) {
+        startingPoints += REFERRAL_BONUS;
+      }
+
+      const newUser = {
+        username,
+        email,
+        password,
+        wallet: 0,
+        points: startingPoints,
+        keys: [],
+        lastCheckin: '',
+        lastChest: ''
+      };
+
+      users.push(newUser);
+      saveUsers(users);
+      localStorage.setItem(STORAGE_KEYS.CURRENT, email);
+      closeModal('auth-modal');
+      renderAppState();
+      showToast(referral === SECRET_REFERRAL
+        ? `VIP Referral Unlocked! +${startingPoints.toLocaleString('en-IN')} Points Credited!`
+        : 'Account Created! +200 Welcome Points Added!');
+    });
+
+    // Login
+    document.getElementById('login-form').addEventListener('submit', e => {
+      e.preventDefault();
+      const id = document.getElementById('login-identifier').value.trim().toLowerCase();
+      const password = document.getElementById('login-password').value;
+      const user = getUsers().find(u => (u.email === id || u.username.toLowerCase() === id) && u.password === password);
+      if (!user) {
+        showToast('Invalid credentials or account not registered.');
+        return;
+      }
+      localStorage.setItem(STORAGE_KEYS.CURRENT, user.email);
+      closeModal('auth-modal');
+      renderAppState();
+      showToast(`Welcome back, ${user.username}!`);
+    });
+
+    document.getElementById('logout-btn').addEventListener('click', () => {
+      localStorage.removeItem(STORAGE_KEYS.CURRENT);
+      renderAppState();
+      showToast('Logged out.');
+    });
+
+    document.getElementById('nav-auth-btn').addEventListener('click', () => {
+      const user = getCurrentUser();
+      if (!user) openAuthModal('login');
+      else window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Daily Check-in
+    document.getElementById('daily-checkin-btn').addEventListener('click', () => {
+      const user = getCurrentUser();
+      if (!user) return;
+      const today = new Date().toDateString();
+      if (user.lastCheckin === today) {
+        showToast('Already checked in today!');
+        return;
+      }
+      const users = getUsers();
+      const idx = users.findIndex(u => u.email === user.email);
+      users[idx].points = (users[idx].points || 0) + 25;
+      users[idx].lastCheckin = today;
+      saveUsers(users);
+      renderAppState();
+      showToast('+25 Daily Check-In Points Claimed!');
+    });
+
+    // Fortune Chest (1 per day)
+    document.getElementById('fortune-chest-btn').addEventListener('click', () => {
+      const user = getCurrentUser();
+      if (!user) return;
+      const today = new Date().toDateString();
+      if (user.lastChest === today) {
+        showToast('Daily Chest already claimed! Come back tomorrow.');
+        return;
+      }
+      const rewards = [50, 100, 150, 250, 500];
+      const won = rewards[Math.floor(Math.random() * rewards.length)];
+      const users = getUsers();
+      const idx = users.findIndex(u => u.email === user.email);
+      users[idx].points = (users[idx].points || 0) + won;
+      users[idx].lastChest = today;
+      saveUsers(users);
+      renderAppState();
+      showToast(`Crimson Chest Opened! You won +${won} Points!`);
+    });
+
+    // QR Code & Add Money
+    function updateQrCode() {
+      const amt = document.getElementById('topup-amount').value || '120';
+      const upi = getPrivateUpi();
+      const upiUrl = `upi://pay?pa=${encodeURIComponent(upi)}&pn=${encodeURIComponent('Zoro Store')}&am=${encodeURIComponent(amt)}&cu=INR`;
+      document.getElementById('upi-qr-img').src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(upiUrl)}`;
+    }
+
+    function openAddMoneyModal() {
+      const user = getCurrentUser();
+      if (!user) {
+        openAuthModal('login');
+        showToast('Please login first to add money.');
+        return;
+      }
+      updateQrCode();
+      openModal('add-money-modal');
+    }
+
+    document.getElementById('add-money-form').addEventListener('submit', e => {
+      e.preventDefault();
+      const user = getCurrentUser();
+      if (!user) return;
+      const amount = Number(document.getElementById('topup-amount').value);
+      const utr = document.getElementById('topup-utr').value.trim();
+      if (amount < 10 || utr.length < 6) {
+        showToast('Enter valid amount & UTR number.');
+        return;
+      }
+      const txs = getTxs();
+      txs.unshift({
+        id: 'TX' + Date.now(),
+        email: user.email,
+        username: user.username,
+        amount,
+        utr,
+        status: 'pending',
+        date: new Date().toLocaleString()
+      });
+      saveTxs(txs);
+      document.getElementById('topup-utr').value = '';
+      closeModal('add-money-modal');
+      renderAppState();
+      showToast('Payment submitted! Awaiting Admin verification.');
+    });
+
+    // Buy Key with Wallet
+    function generateLicenseKey() {
+      const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+      const part = () => Array.from({ length: 4 }, () => chars[Math.floor(Math.random() * chars.length)]).join('');
+      return `ZORO-${part()}-${part()}-${part()}`;
+    }
+
+    function buyKey(plan, price) {
+      const user = getCurrentUser();
+      if (!user) return;
+      if ((user.wallet || 0) < price) {
+        showToast(`Insufficient wallet balance (₹${price} needed). Add money first!`);
+        openAddMoneyModal();
+        return;
+      }
+      const users = getUsers();
+      const idx = users.findIndex(u => u.email === user.email);
+      users[idx].wallet -= price;
+      users[idx].keys = users[idx].keys || [];
+      users[idx].keys.unshift({
+        plan,
+        code: generateLicenseKey(),
+        date: new Date().toLocaleDateString()
+      });
+      saveUsers(users);
+      renderAppState();
+      showToast(`${plan} Generated! Copy your key below.`);
+    }
+
+    function redeemPointsKey(plan, cost) {
+      const user = getCurrentUser();
+      if (!user) return;
+      if ((user.points || 0) < cost) {
+        showToast(`Need ${cost.toLocaleString('en-IN')} Points to forge this key!`);
+        return;
+      }
+      const users = getUsers();
+      const idx = users.findIndex(u => u.email === user.email);
+      users[idx].points -= cost;
+      users[idx].keys = users[idx].keys || [];
+      users[idx].keys.unshift({
+        plan,
+        code: generateLicenseKey(),
+        date: new Date().toLocaleDateString()
+      });
+      saveUsers(users);
+      renderAppState();
+      showToast(`${plan} Forged!`);
+    }
+
+    // Admin Verification Panel (PIN: 1905)
+    document.getElementById('admin-panel-btn').addEventListener('click', () => {
+      const pin = prompt('Enter 4-Digit Admin PIN:');
+      if (pin !== ADMIN_PIN) {
+        if (pin !== null) showToast('Incorrect Admin PIN!');
+        return;
+      }
+      document.getElementById('admin-upi-input').value = getPrivateUpi();
+      renderAdminTxs();
+      openModal('payment-verify-modal');
+    });
+
+    document.getElementById('save-upi-btn').addEventListener('click', () => {
+      const val = document.getElementById('admin-upi-input').value.trim();
+      if (!val) return;
+      localStorage.setItem(STORAGE_KEYS.UPI, val);
+      showToast('Private Paytm UPI ID updated!');
+    });
+
+    function renderAdminTxs() {
+      const txs = getTxs();
+      const list = document.getElementById('admin-tx-list');
+      if (txs.length === 0) {
+        list.innerHTML = '<p class="text-gray-500">No payment requests found.</p>';
+        return;
+      }
+      list.innerHTML = txs.map(t => `
+        <div class="bg-zinc-900 border border-white/10 rounded-xl p-3 flex items-center justify-between gap-2">
+          <div>
+            <p class="font-bold text-white">${t.username} (${t.email})</p>
+            <p class="text-emerald-400 font-bold">Amount: ₹${t.amount} • UTR: ${t.utr}</p>
+            <p class="text-[10px] text-gray-400">${t.date} • Status: ${t.status.toUpperCase()}</p>
+          </div>
+          ${t.status === 'pending' ? `
+            <div class="flex gap-1.5">
+              <button onclick="processTx('${t.id}', 'approved')" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-2.5 py-1.5 rounded-lg">Approve</button>
+              <button onclick="processTx('${t.id}', 'rejected')" class="bg-red-600 hover:bg-red-500 text-white font-bold px-2.5 py-1.5 rounded-lg">Reject</button>
+            </div>
+          ` : ''}
+        </div>
+      `).join('');
+    }
+
+    function processTx(txId, decision) {
+      const txs = getTxs();
+      const txIdx = txs.findIndex(t => t.id === txId);
+      if (txIdx === -1 || txs[txIdx].status !== 'pending') return;
+      txs[txIdx].status = decision;
+      saveTxs(txs);
+
+      if (decision === 'approved') {
+        const users = getUsers();
+        const uIdx = users.findIndex(u => u.email === txs[txIdx].email);
+        if (uIdx !== -1) {
+          users[uIdx].wallet = (users[uIdx].wallet || 0) + Number(txs[txIdx].amount);
+          saveUsers(users);
+        }
+      }
+      renderAdminTxs();
+      renderAppState();
+      showToast(`Payment ${decision.toUpperCase()}!`);
+    }
+
+    function navScroll(target) {
+      if (target === 'top') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        return;
+      }
+      const user = getCurrentUser();
+      const el = target === 'keys'
+        ? document.getElementById(user ? 'dash-keys-section' : 'section-keys')
+        : document.getElementById(user ? 'dash-forge-section' : 'section-keys');
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // PWA Manifest & Install Prompt
+    const manifestObj = {
+      name: "Zoro's Crimson BGMI Loader Key Store",
+      short_name: "Zoro Store",
+      start_url: ".",
+      display: "standalone",
+      background_color: "#08080a",
+      theme_color: "#dc2626",
+      icons: [{
+        src: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%23dc2626'/><text x='50' y='68' font-size='58' font-family='sans-serif' font-weight='bold' fill='white' text-anchor='middle'>Z</text></svg>",
+        sizes: "512x512",
+        type: "image/svg+xml"
+      }]
+    };
+    const manifestBlob = new Blob([JSON.stringify(manifestObj)], { type: 'application/manifest+json' });
+    const linkEl = document.createElement('link');
+    linkEl.rel = 'manifest';
+    linkEl.href = URL.createObjectURL(manifestBlob);
+    document.head.appendChild(linkEl);
+
+    let deferredPrompt;
+    window.addEventListener('beforeinstallprompt', e => {
+      e.preventDefault();
+      deferredPrompt = e;
+      document.getElementById('install-app-btn').classList.remove('hidden');
+    });
+    document.getElementById('install-app-btn').addEventListener('click', async () => {
+      if (!deferredPrompt) return;
+      deferredPrompt.prompt();
+      await deferredPrompt.userChoice;
+      deferredPrompt = null;
+      document.getElementById('install-app-btn').classList.add('hidden');
+    });
+
+    // Init
+    renderAppState();
+  </script>
+</body>
+</html>
